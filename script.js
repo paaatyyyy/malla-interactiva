@@ -13,7 +13,7 @@ const categorias = {
   "Pedagogía": "#f8d4e3"       // Rosa pálido
 };
 
-// Mapeamos cada asignatura a una categoría
+// Relación materia-categoría
 const mapaCategorias = {
   // SEMESTRE 1
   "Literatura Infantil": "Pedagogía",
@@ -159,24 +159,20 @@ semestres.forEach((materias, indiceSemestre) => {
     const cell = document.createElement("div");
     cell.classList.add("cell");
 
-    // Asignar color según categoría
     const categoria = mapaCategorias[materia] || "General";
     cell.style.backgroundColor = categorias[categoria];
-
     cell.textContent = materia;
 
-    // Función para tachar y quitar tachado
     cell.addEventListener("click", () => {
       if (cell.style.textDecoration === "line-through") {
         cell.style.textDecoration = "none";
         cell.style.backgroundColor = categorias[categoria];
       } else {
         cell.style.textDecoration = "line-through";
-        cell.style.backgroundColor = "#d0f0c0"; // Verde claro al marcar
+        cell.style.backgroundColor = "#d0f0c0";
       }
     });
 
-    // Campo de comentario
     const input = document.createElement("input");
     input.placeholder = "Comentario...";
     input.classList.add("comment-box");
